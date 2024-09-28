@@ -9,7 +9,7 @@ for i in range(n):
     L[i] = 1
     for j in range(n):
         if j!=i:
-            L[i] = (X - x[j])/(x[i]-x[j])
+            L[i] *= (X - x[j])/(x[i]-x[j])
     S += L[i] * y[i]
 print(S)    
     

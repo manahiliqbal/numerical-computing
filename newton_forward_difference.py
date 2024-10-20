@@ -19,6 +19,7 @@ P = (X - x[0])/h
 m = np.zeros((n,1))
 m[0] = 1
 S = F[0,0] 
+
 for i in range(1,n):
     m[i] = m[i-1]*(P-i+1)  
     S += m[i]*(F[i,i]/math.factorial(i)) 

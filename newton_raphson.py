@@ -17,5 +17,7 @@ while (n<=N):
         sys.exit()
     else:
         p0 = p
-
+        print (n, p)
+    n = n + 1
+    
 print('Newton Raphson method has not converged')            

@@ -22,7 +22,8 @@ while (n<=N):
     else:
         p0 = p1
         p1 = p2
+        print(n, p2)
      
-    n    
+    n = n +1  
 
 print('Newton Raphson method has not converged')            

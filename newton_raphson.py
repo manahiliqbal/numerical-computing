@@ -12,7 +12,7 @@ p0 = float(input("Enter p0 = "))
 while (n<=N):
     p = p0 - f(p0)/fp(p0)
     
-    if abs(p-p0)<=ToL:
+    if abs(f(p0))<=ToL:
         print(f'Root found at {p} in {n} iterations')
         sys.exit()
     else:

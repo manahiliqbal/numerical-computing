@@ -1,31 +1,29 @@
 import numpy as np
 import sys
 
-def f(x): return x**2 - 6
+def f(x): return 2 * x * np.cos(2 * x) - (x-2) ** 2
 
-
+p0 = float(input("Enter p0: "))
+p1 = float(input("Enter p1: "))
 n = 1
-N = 100
-ToL = 1e-9
+N = 10
+tol = 1e-7
+print('n p f(p)')
 
-p0 = float(input("Enter p0 = "))
-p1 = float(input("Enter p1 = "))
-
-while (n<=N):
+while n <= N:
     q0 = f(p0)
     q1 = f(p1)
-    p2 = p1 - q1*(p1-p0)/(q1-q0)
-    q2 = f(p2)
-    
-    if abs(p2-p1)<=ToL or abs(q2)<=ToL:
-        print(f'Root found at {p2} in {n} iterations')
-        sys.exit()
-        
+    p2 = p1 - q1 * (p1 - p0) / (q1 - q0)
+    print(f'{n} \
+        {p2:.10f} \
+        {f(p2):.10f}')
+    if abs(f(p2)) <= tol or abs(p2 - p1) <= tol:
+        print('Secant method has converged')
+        print('The real zero of f(x) =', p2)
+        print('Value of function at real zero =', f(p2))
+        sys.exit(0)
     else:
         p0 = p1
         p1 = p2
-        print(n, p2)
-     
-    n = n + 1  
-    
-print('Secant method has not converged')            
+    n += 1
+print('zero not found to the desired tolerance')

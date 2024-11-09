@@ -1,23 +1,29 @@
 import numpy as np
 import sys
 
-def f(x): return x**2-6
-def fp(x): return 2*x
+def f(x): return 2 * x * np.cos(2 * x) - (x-2) ** 2
+def fprime(x): return -4 * x * np.sin(2 * x) + 2 * np.cos(2 * x) - 2 * (x - 2)
 
+p0 = float(input("Enter p0: "))
 n = 1
-N = 100
-ToL = 1e-6
+N = 10
+tol = 1e-7
+print('n pn f(pn)')
 
-p0 = float(input("Enter p0 = "))
-while (n<=N):
-    p = p0 - f(p0)/fp(p0)
-    
-    if abs(f(p0))<=ToL:
-        print(f'Root found at {p} in {n} iterations')
-        sys.exit()
+while n <= N:
+    a = f(p0)
+    b = fprime(p0)
+    p = p0 - a / b
+    print(f'{n} \
+        {p:.10f} \
+        {f(p):.10f}')
+    if abs(f(p)) <= tol:
+        print('Newton method has converged')
+        print('final p =', p)
+        print('final f(p) =', f(p))
+        sys.exit(0)
     else:
         p0 = p
-        print (n, p)
-    n = n + 1
+    n += 1
     
-print('Newton Raphson method has not converged')            
+print('zero not found to the desired tolerance')       

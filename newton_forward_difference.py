@@ -1,28 +1,32 @@
 import numpy as np
-import math
 
-x = [0, 0.25, 0.5, 0.75]
-y = [1, 1.64872, 2.71828, 4.48169]
+x = [1, 1.3, 1.6, 1.9, 2.2]
+y = [0.7651977, 0.620086, 0.4554022, 0.2818186, 0.1103623]
 n = len(x)
-X = 0.43
-h = x[1] - x[0]
-F = np.zeros((n,n))
+
+F = np.zeros((n, n))
 
 for i in range(n):
-    F[i,0] = y[i]
-    
-for i in range(1,n):
-    for j in range(1, i+1):
-        F[i,j] = F[i,j-1] - F[i-1,j-1] 
-        
-P = (X - x[0])/h      
-m = np.zeros((n,1))
-m[0] = 1
-S = F[0,0] 
+    F[i, 0] = y[i]
 
-for i in range(1,n):
-    m[i] = m[i-1]*(P-i+1)  
-    S += m[i]*(F[i,i]/math.factorial(i)) 
-    
-print(S)    
-     
+h = x[1] - x[0]
+
+X = float(input('Enter x: '))
+
+p = (X - x[0]) / h
+
+for i in range(1, n):
+    for j in range(1, i + 1):
+        F[i, j] = F[i, j - 1] - F[i - 1, j - 1]
+
+print(F)
+
+yp = F[0, 0]
+
+for i in range(1, n):
+    m = 1
+    for j in range(i):
+        m *= (p - j) / (j + 1)
+    yp += m * F[i, i]
+
+print('For x = %.1f, y = %.10f' % (X, yp))

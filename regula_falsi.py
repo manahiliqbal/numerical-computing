@@ -1,7 +1,7 @@
 import numpy as np
 import sys
 
-def f(x): return 2 * x * np.cos(2 * x) - (x-2) ** 2
+def f(x): return np.sin(x)-np.e**(-x)
 
 p0 = float(input("Enter p0: "))
 p1 = float(input("Enter p1: "))

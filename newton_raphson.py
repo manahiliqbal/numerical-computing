@@ -1,13 +1,13 @@
 import numpy as np
 import sys
 
-def f(x): return 2 * x * np.cos(2 * x) - (x-2) ** 2
-def fprime(x): return -4 * x * np.sin(2 * x) + 2 * np.cos(2 * x) - 2 * (x - 2)
+def f(x): return 3*x+np.sin(x)-np.e**(x)
+def fprime(x): return 3+np.cos(x)-np.e**(x)
 
 p0 = float(input("Enter p0: "))
 n = 1
 N = 10
-tol = 1e-7
+tol = 1e-9
 print('n pn f(pn)')
 
 while n <= N:

@@ -1,11 +1,11 @@
 import numpy as np
 import sys
 
-def g(x): return np.pi + 0.5 * np.sin(0.5 * x)
+def g(x): return 2-np.e**(x)+(x**2)-(3*x)
 
 p0 = float(input("Enter p0: "))
 n = 1
-N = 10
+N = 20
 TOL = 1e-2
 print('n pn')
 
